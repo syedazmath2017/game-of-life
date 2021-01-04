@@ -1,28 +1,30 @@
 pipeline {
     agent any
-    stages { 
-        stage ('Stage1-Compile Stage') {
-          
-           steps { 
-              withMaven(maven : 'run_time') {
-                 sh "mvn -Dmaven.test.failure.ignore=true clean compile"
-            }
-        }
-      }
-      stage ('Testing Stage') {
-           steps { 
-              withMaven(maven : 'run_time') {
-                 sh "mvn -Dmaven.test.failure.ignore=true clean test"
-            }
-        }
-      }
-            stage ('Deploy Stage') {
-           steps { 
-              withMaven(maven : 'run_time') {
-                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
-        }
-      }
 
-   }
-}
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                    git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                    sh 'mvn clean compile'
+                }
+            }
+
+        stage ('Testing Stage') {
+
+            steps {
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                    sh 'mvn test'
+                }
+            }
+        
+
+
+        stage ('Deployment Stage') {
+            steps {
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                    sh 'mvn package'
+                }
+            }
+        }
+    }
