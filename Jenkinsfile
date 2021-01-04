@@ -8,7 +8,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                    git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                    //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                     sh 'mvn clean compile'
                 }
             }
@@ -16,7 +16,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                     sh 'mvn test'
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
 
         stage ('Deployment Stage') {
             steps {
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                     sh 'mvn package'
                 }
             }
