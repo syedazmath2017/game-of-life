@@ -26,7 +26,7 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                    sh 'mvn package'
+                    sh 'mvn -f gameoflife-core/pom.xml package'
                 }
             }
         }
